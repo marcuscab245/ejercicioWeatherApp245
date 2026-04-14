@@ -54,7 +54,6 @@ fun WeatherAppScreen() {
         )
     )
 
-    // Agregamos verticalScroll para que la pantalla se pueda deslizar si es muy pequeña
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -63,31 +62,27 @@ fun WeatherAppScreen() {
             .verticalScroll(rememberScrollState()),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        // 1. Encabezado
+
         Text("El Salvador", color = Color.White, fontSize = 24.sp)
         Text("25°C", color = Color.White, fontSize = 64.sp, fontWeight = FontWeight.Bold)
         Text("Soleado", color = Color.White, fontSize = 18.sp)
 
         Spacer(modifier = Modifier.height(24.dp))
 
-        // 2. Pronóstico por horas
         HourlyForecastSection()
 
         Spacer(modifier = Modifier.height(16.dp))
 
-        // 3. Tarjeta de Detalles
         WeatherDetailCard()
 
         Spacer(modifier = Modifier.height(16.dp))
 
-        // 4. Pronóstico Semanal
         WeeklyForecastSection()
 
         Spacer(modifier = Modifier.height(24.dp))
 
-        // 5. Botón Actualizar
         Button(
-            onClick = { /* No hace nada por ahora */ },
+            onClick = { },
             colors = ButtonDefaults.buttonColors(containerColor = Color.White)
         ) {
             Text("ACTUALIZAR", color = Color(0xFF003888), fontWeight = FontWeight.Bold)
@@ -101,7 +96,6 @@ fun HourlyForecastSection() {
         Text("PRONOSTICO POR HORAS", color = Color.LightGray, fontSize = 12.sp, fontWeight = FontWeight.Bold)
         Spacer(modifier = Modifier.height(8.dp))
 
-        // LazyRow para poder deslizar horizontalmente
         LazyRow(
             horizontalArrangement = Arrangement.spacedBy(24.dp),
             modifier = Modifier.fillMaxWidth()
@@ -161,7 +155,6 @@ fun WeeklyForecastSection() {
         Text("PRONOSTICO SEMANAL", color = Color.LightGray, fontSize = 12.sp, fontWeight = FontWeight.Bold)
         Spacer(modifier = Modifier.height(8.dp))
 
-        // Tarjeta para contener los días
         Card(
             colors = CardDefaults.cardColors(containerColor = Color.White.copy(alpha = 0.2f)),
             shape = RoundedCornerShape(16.dp),
